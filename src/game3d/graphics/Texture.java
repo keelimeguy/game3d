@@ -1,15 +1,19 @@
 package game3d.graphics;
 
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.net.URL;
 
 import javax.imageio.ImageIO;
 
 public class Texture {
-	public static Render floor = loadBitmap("/textures/floor.png");
+	public static Render floor = loadBitmap("/res/textures/floor.png");
 
 	public static Render loadBitmap(String fileName) {
 		try {
-			BufferedImage image = ImageIO.read(Texture.class.getResource(fileName));
+			URL location = Screen.class.getProtectionDomain().getCodeSource().getLocation();
+			File file = new File(location.getFile());
+			BufferedImage image = ImageIO.read(new File(file.getParentFile() + fileName));
 			int width = image.getWidth();
 			int height = image.getHeight();
 			Render result = new Render(width, height);

@@ -15,7 +15,9 @@ import java.awt.Toolkit;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
+import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
@@ -179,7 +181,9 @@ public class Display extends Canvas implements Runnable {
 
 		BufferedImage imageIcon = null;
 		try {
-			imageIcon = ImageIO.read(frame.getClass().getResource("/icons/icon.png"));
+			URL location = Display.class.getProtectionDomain().getCodeSource().getLocation();
+			File file = new File(location.getFile());
+			imageIcon = ImageIO.read(new File(file.getParentFile() + "/res/icons/icon.png"));
 			frame.setIconImage(imageIcon);
 		} catch (IOException ioe) {
 			ioe.printStackTrace();

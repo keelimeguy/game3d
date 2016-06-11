@@ -36,8 +36,8 @@ public class Render3D extends Render {
 				int yPix = (int) (yy + forward);
 				int pixelPosition = x + y * width;
 				zBuffer[pixelPosition] = z;
-				pixels[pixelPosition] = (((xPix & 15) << 4) | ((yPix & 15) << 12)) & 0x00ffffff;
-				//pixels[pixelPosition] = Texture.floor.pixels[(xPix & 7) + (yPix & 7) * 8];
+				//pixels[pixelPosition] = (((xPix & 15) << 4) | ((yPix & 15) << 12)) & 0x00ffffff;
+				pixels[pixelPosition] = Texture.floor.pixels[(xPix & 7) + (yPix & 7) * 8];
 				if (z > 500 || y == (height / 2)) {
 					pixels[pixelPosition] = 0;
 				}
