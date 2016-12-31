@@ -1,6 +1,7 @@
 package game3d.graphics;
 
 import game3d.Game;
+import game3d.input.Controller;
 
 public class Render3D extends Render {
 	public double[] zBuffer;
@@ -63,10 +64,10 @@ public class Render3D extends Render {
 
 	private double calculateWalkFactor(Game game) {
 		double walkFactor = 0.0;
-		if (game.controls.isWalking) {
-			if (game.controls.isCrouchWalk) {
+		if (Controller.isWalking) {
+			if (Controller.isCrouchWalk) {
 				walkFactor = 0.3;
-			} else if (game.controls.isRunning) {
+			} else if (Controller.isRunning) {
 				walkFactor = 0.8;
 			} else {
 				walkFactor = 0.5;

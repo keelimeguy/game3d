@@ -1,19 +1,16 @@
 package game3d.graphics;
 
-import game3d.Game;
-
 import java.util.Random;
+
+import game3d.Game;
 
 public class Screen extends Render {
 
-	private Render test;
-	private final int BLOCK_SIZE = 256;
 	private Render3D render;
 
-	@SuppressWarnings("unused")
 	public Screen(int width, int height) {
 		super(width, height);
-		Random random = new Random();
+		new Random();
 		render = new Render3D(width, height);
 	}
 
